@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ThemeToggle } from './theme-toggle';
 import { Menu, X } from 'lucide-react';
 import Wallet from "../Wallet/Wallet";
+import { Rocket } from 'lucide-react';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,8 +13,11 @@ const Header = () => {
   return (
     <header className="bg-gradient-to-r from-[#1e1e2f] to-[#1a1a40] text-white shadow-md px-6 py-4">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold tracking-wide">
-          <Link href="/">TrustFund</Link>
+        <h1 className="text-2xl font-bold tracking-wide flex items-center gap-2">
+             <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                <Rocket className="w-6 h-6 text-white" />
+              </div>
+          <Link href="/">FundChain</Link>
         </h1>
 
         {/* Desktop Nav */}
