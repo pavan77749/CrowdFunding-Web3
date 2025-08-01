@@ -21,7 +21,7 @@ const Header = () => {
           <Link href="/campaigns" className="bg-white/10 backdrop-blur-md text-sm px-4 py-2 rounded-md hover:bg-white/20 transition">
             Campaigns
           </Link>
-          <Link href="/create-campaign" className="bg-white/10 backdrop-blur-md text-sm px-4 py-2 rounded-md hover:bg-white/20 transition">
+          <Link href="/createCampaign" className="bg-white/10 backdrop-blur-md text-sm px-4 py-2 rounded-md hover:bg-white/20 transition">
             Create
           </Link>
           <Link href="/dashboard" className="bg-white/10 backdrop-blur-md text-sm px-4 py-2 rounded-md hover:bg-white/20 transition">
