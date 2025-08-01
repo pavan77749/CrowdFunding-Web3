@@ -89,12 +89,12 @@ const Wallet = () => {
     <div className='flex items-center gap-2'>
       <button
         onClick={connectWallet}
-        className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-pulse px-4 py-2 bg-white"
+        className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-pulse px-4 py-2 text-xl"
       >
         {walletAddress ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}` : 'Connect Wallet'}
       </button>
       {walletAddress && (
-        <div className=" text-black py-2 px-4 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-sm">
+        <div className=" text-white font-bold shadow  py-2 px-4 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-sm">
           Balance: {balance} ETH
         </div>
       )}
