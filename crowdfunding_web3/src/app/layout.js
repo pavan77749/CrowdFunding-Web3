@@ -7,7 +7,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <Header />
+        <Header/>
         {children}
         </ThemeProvider>
       </body>

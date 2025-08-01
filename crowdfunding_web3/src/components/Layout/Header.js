@@ -11,7 +11,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-gradient-to-r from-[#1e1e2f] to-[#1a1a40] text-white shadow-md px-6 py-4">
+    <header className="bg-gradient-to-r from-[#1e1e2f] to-[#1a1a40] text-white shadow-md px-6 py-4 fixed top-0 left-0 w-full z-50">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold tracking-wide flex items-center gap-2">
              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
@@ -50,23 +50,35 @@ const Header = () => {
 
       {/* Mobile Nav */}
       {menuOpen && (
-        <div className="md:hidden mt-4 flex flex-col gap-3">
-          <Link href="/campaigns" className="bg-white/10 px-4 py-2 rounded-md hover:bg-white/20 transition">
-            Campaigns
-          </Link>
-          <Link href="/create-campaign" className="bg-white/10 px-4 py-2 rounded-md hover:bg-white/20 transition">
-            Create
-          </Link>
-          <Link href="/dashboard" className="bg-white/10 px-4 py-2 rounded-md hover:bg-white/20 transition">
-            Dashboard
-          </Link>
+  <div className="md:hidden mt-4 flex flex-col gap-3">
+    <Link 
+      href="/campaigns" 
+      className="bg-white/10 px-4 py-2 rounded-md hover:bg-white/20 transition"
+      onClick={() => setMenuOpen(false)}
+    >
+      Campaigns
+    </Link>
+    <Link 
+      href="/createCampaign" 
+      className="bg-white/10 px-4 py-2 rounded-md hover:bg-white/20 transition"
+      onClick={() => setMenuOpen(false)}
+    >
+      Create
+    </Link>
+    <Link 
+      href="/dashboard" 
+      className="bg-white/10 px-4 py-2 rounded-md hover:bg-white/20 transition"
+      onClick={() => setMenuOpen(false)}
+    >
+      Dashboard
+    </Link>
 
-          {/* Wallet visible only on mobile */}
-          <div className="md:hidden">
-            <Wallet />
-          </div>
-        </div>
-      )}
+    {/* Wallet visible only on mobile */}
+    <div className="md:hidden">
+      <Wallet />
+    </div>
+  </div>
+)}
     </header>
   );
 };
