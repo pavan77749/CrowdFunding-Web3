@@ -7,7 +7,6 @@ export default function Home() {
       <h1 className="text-3xl font-bold underline">
         Welcome to the CrowdFunding DApp!
           <div>
-      <Button className="bg-red-600">Click me</Button>
     </div>
       </h1>
     </div>
