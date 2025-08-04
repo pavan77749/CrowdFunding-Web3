@@ -17,7 +17,7 @@ const Header = () => {
         {/* Left Section - Logo */}
         <div className="flex justify-start">
           <h1 className="text-2xl font-bold tracking-wide flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-cyan-500 animate-pulse rounded-lg flex items-center justify-center">
               <Rocket className="w-6 h-6 text-white" />
             </div>
             <Link href="/">FundChain</Link>
@@ -30,7 +30,7 @@ const Header = () => {
             Campaigns
           </Link>
           <Link href="/createCampaign" className="bg-white/10 backdrop-blur-md text-xl px-4 py-2 rounded-md hover:bg-white/20 transition">
-            Create
+            Create Campaigns
           </Link>
           <Link href="/dashboard" className="bg-white/10 backdrop-blur-md text-xl px-4 py-2 rounded-md hover:bg-white/20 transition">
             Dashboard
@@ -79,7 +79,7 @@ const Header = () => {
             className="bg-white/10 px-4 py-2 rounded-md hover:bg-white/20 transition"
             onClick={() => setMenuOpen(false)}
           >
-            Create
+            Create Campaigns
           </Link>
           <Link
             href="/dashboard"
