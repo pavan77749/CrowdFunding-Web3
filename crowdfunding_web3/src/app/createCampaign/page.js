@@ -38,11 +38,6 @@ export default function CreateCampaign() {
     'Environment'
   ];
 
-  // Initialize Pinata SDK
-  const pinata = new PinataSDK({
-    pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT,
-    pinataGateway: process.env.NEXT_PUBLIC_PINATA_GATEWAY ,
-  });
 
 
 
@@ -56,7 +51,6 @@ export default function CreateCampaign() {
 
  const uploadToIPFS = async (file) => {
   const PINATA_JWT = process.env.NEXT_PUBLIC_PINATA_JWT;
-
   const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
   const data = new FormData();
   data.append("file", file);
@@ -161,8 +155,8 @@ export default function CreateCampaign() {
      }
 
      // Validate Required Amount is a Positive Number
-     if (isNaN(formData.requiredAmount) || Number(formData.requiredAmount) <= 0) {
-       toast.error('Please enter a valid Required Amount in ETH');
+     if (isNaN(formData.requiredAmount) || BigInt(formData.requiredAmount) <= 0n) {
+       toast.error('Please enter a valid Required Amount in Wei');
        setIsSubmitting(false);
        return;
      }
@@ -186,8 +180,8 @@ export default function CreateCampaign() {
      const provider = new BrowserProvider(window.ethereum);
      const signer = await provider.getSigner();
 
-     // Convert ETH to Wei
-     const requiredAmountInWei = parseEther(formData.requiredAmount.toString());
+     // Use Wei amount directly
+     const requiredAmountInWei = BigInt(formData.requiredAmount);
 
      // Initialize Contract
      const contract = new Contract(
@@ -228,15 +222,6 @@ export default function CreateCampaign() {
  };
 
 
-  const retrieveFileFromIPFS = async (cid) => {
-    try {
-      const data = await pinata.gateways.get(cid);
-      return data;
-    } catch (error) {
-      console.error('Error retrieving file from IPFS:', error);
-      return null;
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br  from-purple-900 via-blue-900 to-indigo-900 p-8">
@@ -296,19 +281,20 @@ export default function CreateCampaign() {
               <div className="space-y-3">
                 <label className="flex items-center text-white text-lg font-semibold">
                   <DollarSign className="w-5 h-5 mr-2 text-green-400" />
-                  Required Amount (ETH) *
+                  Required Amount (Wei) *
                 </label>
                 <input
                   type="number"
                   name="requiredAmount"
                   value={formData.requiredAmount}
                   onChange={handleInputChange}
-                  placeholder="0.00"
-                  step="0.001"
                   min="0"
                   className="w-full px-6 py-4 bg-white/5 border border-white/20 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
                   required
                 />
+                <p className="text-gray-400 text-sm">
+                  Enter amount in Wei (1 ETH = 1000000000000000000 Wei)
+                </p>
               </div>
 
               {/* Category */}
